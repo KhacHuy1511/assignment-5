@@ -1,0 +1,90 @@
+public class StringUtilities {
+
+    // 1. Count the occurrences of a character in a string
+    public static int countCharacterOccurrences(String str, char ch) {
+        int count = 0;
+        for (int i = 0; i < str.length(); i++) {
+            if (str.charAt(i) == ch) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    // 2. Reverse a string
+    public static String reverseString(String str) {
+        StringBuilder reversed = new StringBuilder(str);
+        return reversed.reverse().toString();
+    }
+
+    // 3. Check if a string is a palindrome
+    public static boolean isPalindrome(String str) {
+        int left = 0;
+        int right = str.length() - 1;
+        while (left < right) {
+            if (str.charAt(left) != str.charAt(right)) {
+                return false;
+            }
+            left++;
+            right--;
+        }
+        return true;
+    }
+
+    // 4. Convert uppercase to lowercase and vice versa
+    public static String swapCase(String str) {
+        StringBuilder swapped = new StringBuilder();
+        for (int i = 0; i < str.length(); i++) {
+            char ch = str.charAt(i);
+            if (Character.isUpperCase(ch)) {
+                swapped.append(Character.toLowerCase(ch));
+            } else if (Character.isLowerCase(ch)) {
+                swapped.append(Character.toUpperCase(ch));
+            } else {
+                swapped.append(ch);
+            }
+        }
+        return swapped.toString();
+    }
+
+    // 5. Split words in a string
+    public static String[] splitWords(String str) {
+        return str.split("\\s+");
+    }
+
+    // 6. Count the number of words in a string
+    public static int countWords(String str) {
+        String[] words = str.trim().split("\\s+");
+        return words.length;
+    }
+
+    // 7. Remove extra spaces in a string
+    public static String removeExtraSpaces(String str) {
+        return str.trim().replaceAll("\\s+", " ");
+    }
+
+    // 8. Find the longest word in a string
+    public static String findLongestWord(String str) {
+        String[] words = str.split("\\s+");
+        String longestWord = "";
+        for (String word : words) {
+            if (word.length() > longestWord.length()) {
+                longestWord = word;
+            }
+        }
+        return longestWord;
+    }
+
+    // Main method for testing
+    public static void main(String[] args) {
+        String testString = "Hello World";
+        System.out.println("Count of 'o': " + countCharacterOccurrences(testString, 'o'));
+        System.out.println("Reversed string: " + reverseString("hello"));
+        System.out.println("Is 'madam' a palindrome? " + isPalindrome("madam"));
+        System.out.println("Swap case: " + swapCase(testString));
+        System.out.println("Split words: " + java.util.Arrays.toString(splitWords("Java is fun")));
+        System.out.println("Word count: " + countWords("Java is fun"));
+        System.out.println("Remove extra spaces: '" + removeExtraSpaces("  Hello   World  ") + "'");
+        System.out.println("Longest word: " + findLongestWord("I love programming"));
+    }
+}
